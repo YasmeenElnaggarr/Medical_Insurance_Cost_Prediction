@@ -242,7 +242,7 @@ alpha_value = st.sidebar.slider(
 # ==============================
 # Split Data
 # ==============================
-X = df_encoded.drop(columns="charges", axis=1)
+X = df_encoded.drop(columns=["charges"])
 Y = df_encoded["charges"]
 
 X_train, X_test, Y_train, Y_test = train_test_split(
@@ -335,12 +335,13 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # Helper Function for Counts
 # ==============================
 def get_value_counts(data, column_name):
-    return (
+    counts_df = (
         data[column_name]
         .value_counts()
         .rename_axis(column_name)
         .reset_index(name="count")
     )
+    return counts_df
 
 
 # ==============================
